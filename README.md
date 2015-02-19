@@ -2,7 +2,10 @@
 test scripts for Atlas of Living Australia biocache
 
 ```BASH
-bash-3.2$ curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:scutatus" | ./biocache-search-test-utils.py -j '$.facetResults[*].fieldName' | sort
+bash-3.2$ curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:scutatus" \
+               | ./biocache-search-test-utils.py -j '$.facetResults[*].fieldName' \
+			   | sort
+			   
 alau_user_id
 assertion_user_id
 assertions
@@ -51,7 +54,9 @@ year
 ```
 
 ```BASH
-bash-3.2$ curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:scutatus" | ./biocache-search-test-utils.py -j '$.facetResults[0].fieldResult[*].label'
+bash-3.2$ curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:scutatus" \
+               | ./biocache-search-test-utils.py -j '$.facetResults[0].fieldResult[*].label'
+
 AVES
 Argyrodes fissifrons
 Aspidiobates scutatus
