@@ -1,6 +1,26 @@
 # ala_biocache_test
 test scripts for Atlas of Living Australia biocache
 
+###problem
+(problem-s identified so far)
+in production logs 
+
+###solution
+**1.** test environment setup
+* automated with ansible, using existing ala-demo as a starting point
+  - add ansible task to check swap settings, and if not present setup/add swap file
+  - add ansible task to create $CATALINA_BASE/bin/setenv.sh script to configure JAVA_OPTS for running apache solr THIS IS **REQUIRED** because this is a showstopper if not setup correctly solr will keep crashing
+  
+* vm setup/configuration for tomcat, apache-solr and biocache-services
+* travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
+
+**2.** 
+
+
+
+####NOTES:
+**TODO:** move this, or at least structure this into sections/parts as we go
+
 ```BASH
 bash-3.2$ curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:scutatus" \
                | ./biocache-search-test-utils.py -j '$.facetResults[*].fieldName' \
