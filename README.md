@@ -7,10 +7,7 @@ in production logs
 
 ###solution
 **1.** test environment setup
-* automated with ansible, using existing ala-demo as a starting point
-  - add ansible task to check swap settings, and if not present setup/add swap file
-  - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr; **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
-* vm setup/configuration for tomcat, apache-solr and biocache-services
+* vm setup/configuration for running tomcat, apache solr **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
 ```
 SWAP = 2 x RAM
  Xms = RAM / 2
@@ -36,7 +33,20 @@ and make it executable:
 sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
 * travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
-
+* automated with ansible, using existing ala-demo playbook and inventiry as a starting point
+  - add ansible task to check **and adjust** swap settings if required
+  - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
+* TODO:
+  - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE` is being used and not `CONFIG_PREEMPT_VOLUNTARY` or `CONFIG_PREEMPT`
+```BASH
+hor22n@nci-biocache-test:~$ grep CONFIG_PREEMPT /boot/config-`uname -r`
+# CONFIG_PREEMPT_RCU is not set
+CONFIG_PREEMPT_NOTIFIERS=y
+# CONFIG_PREEMPT_NONE is not set
+CONFIG_PREEMPT_VOLUNTARY=y
+# CONFIG_PREEMPT is not set
+```
+This is **NOT** what you want; you do want: `CONFIG_PREEMPT_NONE=y` because this is a server. see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html)
 **2.** 
 * [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 * 
