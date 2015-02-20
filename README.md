@@ -6,7 +6,7 @@ test scripts for Atlas of Living Australia biocache
 in production logs 
 
 ###solution
-**1.** test environment setup
+####1. test environment setup
 * check and adjust if required `/etc/hosts` file on:
  - on any machine (for example your workstation) you are going to use to run the ansible installation scripts from, and/or later access the test env/vm with curl, webbrowser, etc.; the IP address, and hostname has to match the one in your ansible inventory for this installation
   ```
@@ -94,10 +94,11 @@ in production logs
    ```
   - 
 
-**2.** 
+####2. testing queries 
 * [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 * 
 
+####3. prod log analysis
 
 ####NOTES:
 **TODO:** move this, or at least structure this into sections/parts as we go
