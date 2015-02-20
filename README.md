@@ -42,7 +42,7 @@ in production logs
   
 * travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
 * TODO:
-  - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`
+  - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`; see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
    ```BASH
    hor22n@nci-biocache-test:~$ grep CONFIG_PREEMPT /boot/config-`uname -r`
    # CONFIG_PREEMPT_RCU is not set
@@ -50,8 +50,9 @@ in production logs
    # CONFIG_PREEMPT_NONE is not set
    CONFIG_PREEMPT_VOLUNTARY=y
    # CONFIG_PREEMPT is not set
+
+   #This (CONFIG_PREEMPT_VOLUNTARY=y) is NOT what you want; you do want: CONFIG_PREEMPT_NONE=y because this is a server env.
    ```
-   This (`CONFIG_PREEMPT_VOLUNTARY=y`) is **NOT** what you want; you do want: `CONFIG_PREEMPT_NONE=y` because this is a server env. see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
   - 
 
 **2.** 
