@@ -99,6 +99,11 @@ in production logs
 * 
 
 ####3. prod log analysis
+* write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
+ - for example to extract the timestamps of the "Proxy Error" messages:
+  ```BASH
+  sudo grep -i 'proxy error' /var/log/tomcat7/biocache-service.log | grep '^2015' | sed -e 's/ \[org.*$//g'
+  ```
 
 ####NOTES:
 **TODO:** move this, or at least structure this into sections/parts as we go
