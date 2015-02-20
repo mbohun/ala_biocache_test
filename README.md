@@ -8,7 +8,7 @@ in production logs
 ###solution
 **1.** test environment setup
 * check and adjust if required `/etc/hosts` file on:
- - on any machine (for example your workstation) you are going to use to run the ansible installation scripts from, and/or later access the test env/vm with curl, webbrowser, etc.
+ - on any machine (for example your workstation) you are going to use to run the ansible installation scripts from, and/or later access the test env/vm with curl, webbrowser, etc.; the IP address, and hostname has to match the one in your ansible inventory for this installation
   ```
   130.56.244.8 biocache-test
   ```
