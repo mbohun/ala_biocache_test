@@ -37,7 +37,7 @@ sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
   - add ansible task to check **and adjust** swap settings if required
   - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
 * TODO:
-  - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE` is being used and not `CONFIG_PREEMPT_VOLUNTARY` or `CONFIG_PREEMPT`
+  - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`
 ```BASH
 hor22n@nci-biocache-test:~$ grep CONFIG_PREEMPT /boot/config-`uname -r`
 # CONFIG_PREEMPT_RCU is not set
@@ -46,7 +46,9 @@ CONFIG_PREEMPT_NOTIFIERS=y
 CONFIG_PREEMPT_VOLUNTARY=y
 # CONFIG_PREEMPT is not set
 ```
-This is **NOT** what you want; you do want: `CONFIG_PREEMPT_NONE=y` because this is a server. see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html)
+This is **NOT** what you want; you do want: `CONFIG_PREEMPT_NONE=y` because this is a server. see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
+  - 
+
 **2.** 
 * [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 * 
