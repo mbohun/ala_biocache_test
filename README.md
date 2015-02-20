@@ -35,11 +35,29 @@ in production logs
 * automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible
   - add ansible task to check **and adjust** swap settings if required
   - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
-  - copy solr index from the production env onto your test env/vm into `/data/solr-indexes` and adjust `/data/solr/solr.xml` to point to the `/data/solr-indexes`:
+  - copy solr index from the production env onto your test env/vm into `/data/solr-indexes` and adjust `/data/solr/solr.xml` to point to the indexes/indices you copied into `/data/solr-indexes`:
+   ```BASH
+   # 1. stop tomcat and solr
+   # 2. backup/rename the existing /data/solr directory
+   # 3. copy the biocache indexes from prod
+   # 4. TODO: confirm this step: copy? OR create? /data/solr instanceDir-s for each copied index/dataDir 
+   # 5. crate/adjust the /data/solr/solr.xml file to point to the, see bellow 
+   # 6. make sure all dir and files are owned by the tomcat user:
+   sudo chown -R tomcat7:tomcat7 /data/solr
+   sudo chown -R tomcat7:tomcat7 /data/solr-indexes
    ```
-   test
+
+   `/data/solr/solr.xml`
+   ```XML
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <solr persistent="true">
+      <cores adminPath="/admin/cores" defaultCoreName="biocache" host="${host:}" hostPort="${jetty.port:8983}" hostContext="${hostContext:solr}" zkClientTimeout="${zkClientTimeout:15000}">
+         <core name="bie"      config="solrconfig.xml" instanceDir="/data/solr/bie/"      schema="schema.xml" dataDir="/data/solr-indexes/bie-03-12-2014"/>
+         <core name="biocache" config="solrconfig.xml" instanceDir="/data/solr/biocache/" schema="schema.xml" dataDir="/data/solr-indexes/07-02-2015-07-54"/>
+	  </cores>
+   </solr>
    ```
-  
+
 * travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
 * TODO:
   - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`; see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
