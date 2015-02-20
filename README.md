@@ -7,7 +7,16 @@ in production logs
 
 ###solution
 **1.** test environment setup
-* automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible:
+* check and adjust if required `/etc/hosts` file on:
+ - on any machine (for example your workstation) you are going to use to run the ansible installation scripts from, and/or later access the test env/vm with curl, webbrowser, etc.
+  ```
+  130.56.244.8 biocache-test
+  ```
+ - once installed make sure your test env/vm `/etc/hosts` is setup correctly too
+  ```
+  127.0.0.1 biocache-test
+  ```
+* run the ansible-playbook to install the test env/vm; this is automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible:
  - vm setup/configuration for running tomcat, apache solr **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
   ```
   SWAP = 2 x RAM
