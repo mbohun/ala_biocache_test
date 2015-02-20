@@ -15,8 +15,8 @@ in production logs
  --------------
  # for example if your vm has 32gb RAM, configure it as foillows:
  SWAP = 64gb
- Xms = 16gb
- Xmx = 16gb
+ Xms  = 16gb
+ Xmx  = 16gb
 
  # your JAVA_OPTS for tomcat startup will be set to:
  JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
