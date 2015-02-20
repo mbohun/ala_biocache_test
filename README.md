@@ -24,14 +24,14 @@ SWAP = 64gb
 # your JAVA_OPTS for tomcat startup will be set to:
 JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
 ```
-  - create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
+create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
 ```BASH
 #!/bin/sh
 
 JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
 
 ```
-  - and make it executable:
+and make it executable:
 ```BASH
 sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
