@@ -7,45 +7,51 @@ in production logs
 
 ###solution
 **1.** test environment setup
-* vm setup/configuration for running tomcat, apache solr **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
- ```
- SWAP = 2 x RAM
-  Xms = RAM / 2
-  Xmx = RAM / 2
- --------------
- # for example if your vm has 32gb RAM, configure it as foillows:
- SWAP = 64gb
- Xms  = 16gb
- Xmx  = 16gb
+* automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible:
+ - vm setup/configuration for running tomcat, apache solr **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
+  ```
+  SWAP = 2 x RAM
+   Xms = RAM / 2
+   Xmx = RAM / 2
+  --------------
+  # for example if your vm has 32gb RAM, configure it as foillows:
+  SWAP = 64gb
+   Xms = 16gb
+   Xmx = 16gb
+  
+  # your JAVA_OPTS for tomcat startup will be set to:
+  JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
+  ```
+  create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
+  ```BASH
+  #!/bin/sh
+  JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
+  
+  ```
+  and make it executable:
+  ```BASH
+  sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
+  ```
+ - copy solr index from the production env onto your test env/vm into `/data/solr-indexes` and adjust `/data/solr/solr.xml` to point to the indexes/indices you copied into `/data/solr-indexes`:
+  ```BASH
+  # 1. stop tomcat and solr
+  sudo service tomcat7 stop
+   
+  # 2. backup/rename the existing /data/solr directory
+  
+  # 3. copy the biocache indexes from prod
+   
+  # 4. TODO: confirm this step: copy? OR create? /data/solr instanceDir-s for each copied index/dataDir
+  
+  # 5. crate/adjust the /data/solr/solr.xml file to point to the, see bellow
 
- # your JAVA_OPTS for tomcat startup will be set to:
- JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
- ```
- create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
- ```BASH
- #!/bin/sh
- 
- JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
- 
- ```
- and make it executable:
- ```BASH
- sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
- ```
-* automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible
-  - add ansible task to check **and adjust** swap settings if required
-  - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
-  - copy solr index from the production env onto your test env/vm into `/data/solr-indexes` and adjust `/data/solr/solr.xml` to point to the indexes/indices you copied into `/data/solr-indexes`:
-   ```BASH
-   # 1. stop tomcat and solr
-   # 2. backup/rename the existing /data/solr directory
-   # 3. copy the biocache indexes from prod
-   # 4. TODO: confirm this step: copy? OR create? /data/solr instanceDir-s for each copied index/dataDir 
-   # 5. crate/adjust the /data/solr/solr.xml file to point to the, see bellow 
-   # 6. make sure all dir and files are owned by the tomcat user:
-   sudo chown -R tomcat7:tomcat7 /data/solr
-   sudo chown -R tomcat7:tomcat7 /data/solr-indexes
-   ```
+  # 6. make sure all dir and files are owned by the tomcat user:
+  sudo chown -R tomcat7:tomcat7 /data/solr
+  sudo chown -R tomcat7:tomcat7 /data/solr-indexes
+  
+  # 7. restart tomcat and solr
+  sudo service tomcat7 start
+  ```
 
    `/data/solr/solr.xml`
    ```XML
@@ -57,8 +63,14 @@ in production logs
 	  </cores>
    </solr>
    ```
+  - test/verify your solr and biocache test env:
+   ```BASH
+   # verify solr search
+   curl -s "http://biocache-test/solr/biocache/select?q=Pseudonaja&wt=json" | python -m json.tool | less
+   # verify biocache-service service
+   curl -s "http://biocache-test/biocache-service/occurrences/search?q=text:Pseudonaja" | python -m json.tool | less
+   ```
 
-* travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
 * TODO:
   - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`; see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
    ```BASH
