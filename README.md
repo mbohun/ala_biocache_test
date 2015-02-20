@@ -8,30 +8,30 @@ in production logs
 ###solution
 **1.** test environment setup
 * vm setup/configuration for running tomcat, apache solr **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
-```
-SWAP = 2 x RAM
- Xms = RAM / 2
- Xmx = RAM / 2
---------------
-# for example if your vm has 32gb RAM, configure it as foillows:
-SWAP = 64gb
+ ```
+ SWAP = 2 x RAM
+  Xms = RAM / 2
+  Xmx = RAM / 2
+ --------------
+ # for example if your vm has 32gb RAM, configure it as foillows:
+ SWAP = 64gb
  Xms = 16gb
  Xmx = 16gb
 
-# your JAVA_OPTS for tomcat startup will be set to:
-JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
-```
-create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
-```BASH
-#!/bin/sh
-
-JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
-
-```
-and make it executable:
-```BASH
-sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
-```
+ # your JAVA_OPTS for tomcat startup will be set to:
+ JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
+ ```
+ create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
+ ```BASH
+ #!/bin/sh
+ 
+ JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
+ 
+ ```
+ and make it executable:
+ ```BASH
+ sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
+ ```
 * automated with ansible, using existing ala-demo playbook and inventiry as a starting point, although the following task-s/customization was done manually and could/should be automated with ansible
   - add ansible task to check **and adjust** swap settings if required
   - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
