@@ -9,21 +9,29 @@ in production logs
 **1.** test environment setup
 * automated with ansible, using existing ala-demo as a starting point
   - add ansible task to check swap settings, and if not present setup/add swap file
-  - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr THIS IS **REQUIRED** because this is a showstopper if not setup correctly solr will keep crashing
+  - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr; **THIS IS REQUIRED BECAUSE IF NOT SETUP CORRECTLY SOLR WILL KEEP CRASHING**
 * vm setup/configuration for tomcat, apache-solr and biocache-services
 ```
 SWAP = 2 x RAM
-Xms  = RAM / 2
-Xmx  = RAM / 2
+ Xms = RAM / 2
+ Xmx = RAM / 2
+--------------
+# for example if your vm has 32gb RAM, configure it as foillows:
+SWAP = 64gb
+ Xms = 16gb
+ Xmx = 16gb
+
+# your JAVA_OPTS for tomcat startup will be set to:
+JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
 ```
-so create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
+  - create `$CATALINA_BASE/bin/setenv.sh` (for example: `/usr/share/tomcat7/bin/setenv.sh`) file:
 ```BASH
 #!/bin/sh
 
 JAVA_OPTS="-Xms16g -Xmx16g -XX:MaxPermSize=256m -Xss256k"
 
 ```
-and make it executable:
+  - and make it executable:
 ```BASH
 sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
 ```
