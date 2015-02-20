@@ -102,8 +102,25 @@ in production logs
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
  - for example to extract the timestamps of the "Proxy Error" messages:
   ```BASH
-  sudo grep -i 'proxy error' /var/log/tomcat7/biocache-service.log | grep '^2015' | sed -e 's/ \[org.*$//g'
+  #!/bin/bash
+  
+  # for each log file if we have many, collect $ERROR_PATTER and accumulate the matches in some tmp file
+  grep -i 'proxy error' ./biocache-service.log | grep '^201[5-9]' | sed -e 's/ \[org.*$//g' > proxy_error-all.dat
+  
+  # for each day extract the number of errors
+  for day in `cat proxy_error-all.dat | sed -e 's/ .*$//g' | sort | uniq`
+  do
+      counter=`grep ${day} proxy_error-all.dat | wc -l`
+      echo "${day} ${counter}"
+  done
   ```
+
+  ```BASH
+  ./extract-errors-per-day.sh > errors-per-day-example.dat
+  gnuplot errors-per-day-example.dat
+  ```
+  example output (errors-per-day-histogram.png):
+  ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/errors-per-day-histogram.png "example ouptut")
 
 ####NOTES:
 **TODO:** move this, or at least structure this into sections/parts as we go
