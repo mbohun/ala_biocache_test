@@ -36,9 +36,9 @@ sudo chmod +x /usr/share/tomcat7/bin/setenv.sh
   - add ansible task to check **and adjust** swap settings if required
   - add ansible task to create `$CATALINA_BASE/bin/setenv.sh` script to configure `JAVA_OPTS` for running apache solr
   - copy solr index from the production env onto your test env/vm into `/data/solr-indexes` and adjust `/data/solr/solr.xml` to point to the `/data/solr-indexes`:
-    ```
-    test
-    ```
+   ```
+   test
+   ```
   
 * travis-ci build file created to deploy the biocache test env ansible-playbook into the vm
 * TODO:
