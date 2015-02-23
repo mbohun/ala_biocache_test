@@ -97,7 +97,25 @@ in production logs
 
 ####2. testing queries 
 * [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
-* 
+Error executing query with requestParams:
+EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
+```
+2015-02-20 11:23:39,892 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams:
+q=lsid:urn:lsid:biodiversity.org.au:afd.taxon:25c27ca8-906a-44d7-8450-0f08557cc58e
+&fq=
+&start=0
+&pageSize=0
+&sort=score
+&dir=asc
+&qc=
+&facets=raw_taxon_name
+&flimit=20
+&formattedQuery=lft:[399022 TO 399023]
+EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
+```
+* [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
+
+
 
 ####3. prod log analysis
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
