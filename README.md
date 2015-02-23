@@ -113,8 +113,87 @@ q=lsid:urn:lsid:biodiversity.org.au:afd.taxon:25c27ca8-906a-44d7-8450-0f08557cc5
 &formattedQuery=lft:[399022 TO 399023]
 EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
 ```
-* [org.ala.biocache.dao.SearchDAOImpl](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
-
+* [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
+Problem communicating with SOLR server. Server refused connection at: http://ala-rufus.it.csiro.au/solr
+org.apache.solr.client.solrj.SolrServerException: Server refused connection at: http://ala-rufus.it.csiro.au/solr
+```
+2015-02-20 11:23:39,894 [org.ala.biocache.dao.SearchDAOImpl] Problem communicating with SOLR server. Server refused connection at: http://ala-rufus.it.csiro.au/solr
+org.apache.solr.client.solrj.SolrServerException: Server refused connection at: http://ala-rufus.it.csiro.au/solr
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:428)
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:180)
+        at org.apache.solr.client.solrj.request.QueryRequest.process(QueryRequest.java:90)
+        at org.apache.solr.client.solrj.SolrServer.query(SolrServer.java:310)
+        at au.org.ala.biocache.dao.SearchDAOImpl.runSolrQuery(SearchDAOImpl.java:1509)
+        at au.org.ala.biocache.dao.SearchDAOImpl.findByFulltext(SearchDAOImpl.java:2576)
+        at sun.reflect.GeneratedMethodAccessor861.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:309)
+        at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:196)
+        at com.sun.proxy.$Proxy25.findByFulltext(Unknown Source)
+        at au.org.ala.biocache.web.WMSController.getBBox(WMSController.java:875)
+        at au.org.ala.biocache.web.WMSController.jsonBoundingBox(WMSController.java:411)
+        at sun.reflect.GeneratedMethodAccessor951.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:176)
+        at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.invokeHandlerMethod(AnnotationMethodHandlerAdapter.java:436)
+        at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(AnnotationMethodHandlerAdapter.java:424)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:669)
+        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:574)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:722)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at au.org.ala.web.filter.JsonpFilter.doFilter(JsonpFilter.java:52)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at com.opensymphony.sitemesh.webapp.SiteMeshFilter.obtainContent(SiteMeshFilter.java:129)
+        at com.opensymphony.sitemesh.webapp.SiteMeshFilter.doFilter(SiteMeshFilter.java:77)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:224)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:169)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:168)
+        at com.googlecode.psiprobe.Tomcat70AgentValve.invoke(Tomcat70AgentValve.java:38)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:98)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:927)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:407)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:987)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:579)
+        at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:309)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:744)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connection to http://ala-rufus.it.csiro.au refused
+        at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:190)
+        at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+        at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:645)
+        at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:480)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:784)
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:365)
+        ... 53 more
+Caused by: java.net.ConnectException: Connection refused
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+        at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+        at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+        at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+        at java.net.Socket.connect(Socket.java:579)
+        at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:127)
+        at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180)
+        ... 60 more
+```
 
 
 ####3. prod log analysis
