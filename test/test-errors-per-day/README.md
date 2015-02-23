@@ -1,4 +1,4 @@
-####example: extract the number/count of some error per day (for example: "Proxy Error")
+####extract the number/count of some error per day
 
 ```BASH
 mbohun@linux:~> ./extract-errors-per-day.sh
