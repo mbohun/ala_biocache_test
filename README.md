@@ -96,6 +96,9 @@ in production logs
   - 
 
 ####2. prod log analysis
+* TODO: Intro (mainly the current limitations & constraints)
+* TODO: SPAM queries
+
 * [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 Error executing query with requestParams:
 EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
