@@ -12,6 +12,7 @@ mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log '"Proxy Error
 2015-02-22 53
 2015-02-23 17
 ```
+optional step, for example plot/visualize the result with gnuplot, D3.js, etc.
 ```BASH
 mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log '"Proxy Error"' | gnuplot errors-per-day.gnuplot
 ```
