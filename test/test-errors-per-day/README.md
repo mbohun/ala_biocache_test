@@ -20,9 +20,9 @@ mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log '"Proxy Error
 ```
 
 *example:*  
-[./extract-errors-per-day.sh](extract-errors-per-day.sh) [./biocache-service.log](biocache-service.log) '"Proxy Error"' \  
-| [gnuplot](http://www.gnuplot.info) [errors-per-day.gnuplot](errors-per-day.gnuplot) \  
-> [errors-per-day-histogram.png](errors-per-day-histogram.png)
+[./extract-errors-per-day.sh](extract-errors-per-day.sh) [./biocache-service.log](biocache-service.log) '"Proxy Error"' `\`  
+`|` [gnuplot](http://www.gnuplot.info) [errors-per-day.gnuplot](errors-per-day.gnuplot) `\`  
+`>` [errors-per-day-histogram.png](errors-per-day-histogram.png)
 
 *example [output](errors-per-day-histogram.png):*
 ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/errors-per-day-histogram.png "example ouptut")
