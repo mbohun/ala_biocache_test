@@ -194,7 +194,126 @@ Caused by: java.net.ConnectException: Connection refused
         at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180)
         ... 60 more
 ```
+* [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
+EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+```
+2015-02-20 12:56:43,136 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=lsid:urn:lsid:biodiversity.org.au:afd.taxon:34b8f2b3-0828-4bd5-a307-c4598fa453b5 AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true&fq=&start=0&pageSize=0&sort=score&dir=a
+sc&qc=&formattedQuery=lft:[405735 TO 405736] AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
 
+2015-02-20 12:57:24,726 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=lsid:urn:lsid:biodiversity.org.au:afd.taxon:59c557c7-8751-473a-a758-2981c844b320 AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true&fq=&start=0&pageSize=0&sort=score&dir=a
+sc&qc=&formattedQuery=lft:[409368 TO 409369] AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+
+2015-02-20 12:57:24,726 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=type_status:[* TO *]&fq=-type_status:notatype&fq=name_match_metric:"exactMatch"&fq=sensitive:"generalised"&start=0&pageSize=20&sort=first_loaded_date&dir=desc&qc=&facets=taxon_name&facets=com
+mon_name&facets=subspecies_name&facets=species&facets=family&facets=species_group&facets=species_habitats&facets=uncertainty&facets=sensitive&facets=state_conservation&facets=location_id&facets=cl966&facets=cl959&facets=state&facets=country&facets=ibra&facets=imcra&facets=cl1918&facets=cl617&fac
+ets=cl620&facets=geospatial_kosher&facets=month&facets=decade&facets=event_id&facets=basis_of_record&facets=type_status&facets=multimedia&facets=collector&facets=occurrence_status_s&facets=alau_user_id&facets=data_provider_uid&facets=data_resource_uid&facets=assertions&facets=assertion_user_id&f
+acets=outlier_layer&facets=outlier_layer_count&facets=taxonomic_issue&facets=duplicate_status&facets=establishment_means&facets=user_assertions&facets=name_match_metric&facets=duplicate_type&facets=raw_datum&facets=raw_sex&facets=life_stage&facets=elevation_d_rng&facets=identified_by&facets=spec
+ies_subgroup&flimit=10&formattedQuery=type_status:[* TO *] EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+
+2015-02-20 12:57:24,729 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=lsid:urn:lsid:catalogueoflife.org:taxon:3386c832-4661-11e1-9b0d-e752e483e0da:col20120124 AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true&fq=&start=0&pageSize=0&sort=sco
+re&dir=asc&qc=&formattedQuery=lft:[221826 TO 222379] AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+
+2015-02-20 13:02:35,116 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=collection_uid:co55&fq=assertions:"geodeticDatumAssumedWgs84"&fq=subspecies_name:"Abelmoschus manihot subsp. tetraphyllus"&fq=cl1918:"Primarily Vegetated Natural & Semi-Natural Terrestrial Ve
+getation Woody Trees Closed"&start=0&pageSize=20&sort=first_loaded_date&dir=desc&qc=&facets=taxon_name&facets=common_name&facets=subspecies_name&facets=species&facets=family&facets=species_group&facets=species_habitats&facets=uncertainty&facets=sensitive&facets=state_conservation&facets=location
+_id&facets=cl966&facets=cl959&facets=state&facets=country&facets=ibra&facets=imcra&facets=cl1918&facets=cl617&facets=cl620&facets=geospatial_kosher&facets=month&facets=decade&facets=event_id&facets=basis_of_record&facets=type_status&facets=multimedia&facets=collector&facets=occurrence_status_s&f
+acets=alau_user_id&facets=data_provider_uid&facets=data_resource_uid&facets=assertions&facets=assertion_user_id&facets=outlier_layer&facets=outlier_layer_count&facets=taxonomic_issue&facets=duplicate_status&facets=establishment_means&facets=user_assertions&facets=name_match_metric&facets=duplica
+te_type&facets=raw_datum&facets=raw_sex&facets=life_stage&facets=elevation_d_rng&facets=identified_by&facets=species_subgroup&flimit=10&formattedQuery=collection_uid:co55 EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+
+2015-02-20 13:02:35,117 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=lsid:urn:lsid:biodiversity.org.au:afd.taxon:5dab26f3-b0a7-431a-a31d-b897aeaf0c30 AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true&fq=&start=0&pageSize=0&sort=score&dir=a
+sc&qc=&formattedQuery=lft:[402676 TO 402725] AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+
+2015-02-20 13:02:35,117 [org.ala.biocache.dao.SearchDAOImpl] Error executing query with requestParams: q=lsid:urn:lsid:biodiversity.org.au:apni.taxon:344931 AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true&fq=&start=0&pageSize=0&sort=score&dir=asc&qc=&formattedQuery=lft:[25
+9525 TO 259526] AND (country:"Australia" OR state:[* TO *]) AND geospatial_kosher:true EXCEPTION: Server at http://ala-rufus.it.csiro.au/solr returned non ok status:502, message:Proxy Error
+```
+* [[org.ala.biocache.service.DownloadService]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/service/DownloadService.java)
+org.apache.solr.client.solrj.SolrServerException:
+IOException occured when talking to server at: http://ala-rufus.it.csiro.au/solr
+```
+2015-02-20 13:09:01,967 [org.ala.biocache.service.DownloadService] org.apache.solr.client.solrj.SolrServerException: IOException occured when talking to server at: http://ala-rufus.it.csiro.au/solr
+java.util.concurrent.ExecutionException: org.apache.solr.client.solrj.SolrServerException: IOException occured when talking to server at: http://ala-rufus.it.csiro.au/solr
+        at java.util.concurrent.FutureTask.report(FutureTask.java:122)
+        at java.util.concurrent.FutureTask.get(FutureTask.java:188)
+        at au.org.ala.biocache.dao.SearchDAOImpl.writeResultsFromIndexToStream(SearchDAOImpl.java:711)
+        at sun.reflect.GeneratedMethodAccessor1010.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:309)
+        at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:196)
+        at com.sun.proxy.$Proxy25.writeResultsFromIndexToStream(Unknown Source)
+        at au.org.ala.biocache.service.DownloadService.writeQueryToStream(DownloadService.java:165)
+        at au.org.ala.biocache.service.DownloadService.writeQueryToStream(DownloadService.java:134)
+        at au.org.ala.biocache.service.DownloadService.writeQueryToStream(DownloadService.java:226)
+        at au.org.ala.biocache.web.OccurrenceController.occurrenceIndexDownload(OccurrenceController.java:800)
+        at sun.reflect.GeneratedMethodAccessor1008.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:176)
+        at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.invokeHandlerMethod(AnnotationMethodHandlerAdapter.java:436)
+        at org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(AnnotationMethodHandlerAdapter.java:424)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:669)
+        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:574)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:722)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at com.opensymphony.sitemesh.webapp.SiteMeshFilter.obtainContent(SiteMeshFilter.java:129)
+        at com.opensymphony.sitemesh.webapp.SiteMeshFilter.doFilter(SiteMeshFilter.java:77)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:224)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:169)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:168)
+        at com.googlecode.psiprobe.Tomcat70AgentValve.invoke(Tomcat70AgentValve.java:38)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:98)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:927)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:407)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:987)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:579)
+        at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:309)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:744)
+Caused by: org.apache.solr.client.solrj.SolrServerException: IOException occured when talking to server at: http://ala-rufus.it.csiro.au/solr
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:435)
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:180)
+        at org.apache.solr.client.solrj.request.QueryRequest.process(QueryRequest.java:90)
+        at org.apache.solr.client.solrj.SolrServer.query(SolrServer.java:310)
+        at au.org.ala.biocache.dao.SearchDAOImpl.runSolrQuery(SearchDAOImpl.java:1509)
+        at au.org.ala.biocache.dao.SearchDAOImpl.runSolrQuery(SearchDAOImpl.java:1435)
+        at au.org.ala.biocache.dao.SearchDAOImpl.access$000(SearchDAOImpl.java:78)
+        at au.org.ala.biocache.dao.SearchDAOImpl$1.call(SearchDAOImpl.java:692)
+        at au.org.ala.biocache.dao.SearchDAOImpl$1.call(SearchDAOImpl.java:664)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+        ... 3 more
+Caused by: org.apache.http.NoHttpResponseException: The target server failed to respond
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:95)
+        at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:62)
+        at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:254)
+        at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:289)
+        at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:252)
+        at org.apache.http.impl.conn.ManagedClientConnectionImpl.receiveResponseHeader(ManagedClientConnectionImpl.java:191)
+        at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:300)
+        at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:127)
+        at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:717)
+        at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:522)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+        at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:784)
+        at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:365)
+        ... 12 more
+```
+
+
+* [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
+
+* [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 
 ####3. prod log analysis
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
