@@ -35,3 +35,12 @@ mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log \
 ```
 *example [output](IOException-occured-when-talking-to-server.png):*
 ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/IOException-occured-when-talking-to-server.png "example ouptut")
+
+```BASH
+mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log \
+                '"RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token"' \
+                | gnuplot errors-per-day.gnuplot \
+				> RestTemplate-error-START_OBJECT-token.png
+```
+*example [output](IOException-occured-when-talking-to-server.png):*
+![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/RestTemplate-error-START_OBJECT-token.png "example ouptut")
