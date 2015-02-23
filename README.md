@@ -95,7 +95,7 @@ in production logs
    ```
   - 
 
-####2. testing queries 
+####2. prod log analysis
 * [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 Error executing query with requestParams:
 EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
@@ -315,7 +315,7 @@ Caused by: org.apache.http.NoHttpResponseException: The target server failed to 
 
 * [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 
-####3. prod log analysis
+####3. testing queries
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
  - for example to extract the timestamps of the "Proxy Error" messages:
   ```BASH
