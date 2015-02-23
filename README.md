@@ -81,6 +81,7 @@ in production logs
    ```
 
 * TODO:
+  - **IMPORTANT:** both production and test env biocache-service (and most likely other services) ansible-playbook-s should make sure that `biocache-serice.log` and all other important (tomcat, solr, etc.) logs are properly preserved/archived (i found out accidentally on the 2015-02-20 when the `/var/log/tomcat7/biocache-service.log` was deleted, resp. replaced/reset and all the existing log messages starting from early January 2015 were lost)
   - check/verify the vm OS/kernel setup, for example if `CONFIG_PREEMT_NONE=y` is being used and not `CONFIG_PREEMPT_VOLUNTARY=y` or `CONFIG_PREEMPT=y`; see: [http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html](http://cateee.net/lkddb/web-lkddb/PREEMPT_NONE.html) for more info on this.
    ```BASH
    hor22n@nci-biocache-test:~$ grep CONFIG_PREEMPT /boot/config-`uname -r`
