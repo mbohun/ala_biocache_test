@@ -15,7 +15,7 @@ done
 ```
 
 ./[extract-errors-per-day.sh](extract-errors-per-day.sh) > [errors-per-day-example.dat](errors-per-day-example.dat)  
-[gnuplot](http://www.gnuplot.info) [errors-per-day-example.gnuplot](errors-per-day-example.gnuplot)
+[gnuplot](http://www.gnuplot.info) [errors-per-day.gnuplot](errors-per-day.gnuplot)
 
 example output ([errors-per-day-histogram.png](errors-per-day-histogram.png) ):
 ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/errors-per-day-histogram.png "example ouptut")
