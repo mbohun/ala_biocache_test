@@ -117,7 +117,7 @@ in production logs
 
   ```BASH
   ./extract-errors-per-day.sh > errors-per-day-example.dat
-  gnuplot errors-per-day-example.dat
+  gnuplot errors-per-day-example.gnuplot
   ```
   example output (errors-per-day-histogram.png):
   ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/errors-per-day-histogram.png "example ouptut")
