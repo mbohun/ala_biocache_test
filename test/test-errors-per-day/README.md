@@ -26,3 +26,12 @@ mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log '"Proxy Error
 
 *example [output](errors-per-day-histogram.png):*
 ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/errors-per-day-histogram.png "example ouptut")
+
+```BASH
+mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log \
+                '"IOException occured when talking to server at: http://ala-rufus.it.csiro.au/solr"' \
+                | gnuplot errors-per-day.gnuplot \
+				> IOException-occured-when-talking-to-server.png
+```
+*example [output](IOException-occured-when-talking-to-server.png):*
+![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/test/test-errors-per-day/IOException-occured-when-talking-to-server.png "example ouptut")
