@@ -14,7 +14,8 @@ mbohun@linux:~> ./extract-errors-per-day.sh ./biocache-service.log '"Proxy Error
 ```
 optional step, for example plot/visualize the result with gnuplot, D3.js, etc.  
 *example:*  
-[./extract-errors-per-day.sh](extract-errors-per-day.sh) [./biocache-service.log](biocache-service.log) '"Proxy Error"' `\`  
+[./extract-errors-per-day.sh](extract-errors-per-day.sh) [./biocache-service.log](biocache-service.log) `\`  
+'"Proxy Error"' `\`  
 `|` [gnuplot](http://www.gnuplot.info) [errors-per-day.gnuplot](errors-per-day.gnuplot) `\`  
 `>` [errors-per-day-histogram.png](errors-per-day-histogram.png)
 
