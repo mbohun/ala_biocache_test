@@ -96,9 +96,14 @@ in production logs
   - 
 
 ####2. prod log analysis
-* TODO: Intro (mainly the current limitations & constraints)
-* TODO: SPAM queries
-
+* Intro
+ - Limitations & Constraints
+* SPAM queries
+  These usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity).
+  ```BASH
+  sudo grep '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://' /var/log/tomcat7/biocache-service.log
+  ```
+  
 * [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 Error executing query with requestParams:
 EXCEPTION: Server refused connection at: http://ala-rufus.it.csiro.au/solr
