@@ -98,6 +98,7 @@ in production logs
 ####2. prod log analysis
 * Intro
  - Limitations & Constraints
+   Main limitation at the moment is the lack of information/details/sample/example queries that "are running slow" to compare them with "normal" queries to disect the problem deper.
 * SPAM queries these usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop). *example:*
   ```BASH
   sudo grep \
@@ -107,6 +108,29 @@ in production logs
   This should be flitered off ASAP to avoid any further processing as much as possible. This should be rather easy to benchmark, as in setup a test case where the same N legimitate/normal queries will be:
   - executed WITHOUT any interference/competition from SPAM queries
   - executed WITH interference/competition from SPAM queries
+* Errors summary
+  - extract all available/captured error types
+   - count/plot each error type total (for a given time/date range) 
+   - count/plot each error type total per day (on a timeline)
+
+  ```BASH
+  sudo grep '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[[a-zA-Z0-9.]*\]' /var/log/tomcat7/biocache-service.log | sed -e 's/].*$/]/g' | sed -e 's/^.*\[/[/' | sort | uniq
+  [org.ala.biocache.dao.SearchDAOImpl]
+  [org.ala.biocache.service.AuthService]
+  [org.ala.biocache.service.DownloadService]
+  [org.ala.biocache.util.CollectionsCache]
+  [org.ala.biocache.web.MapController]
+  [org.ala.biocache.web.WMSController]
+  ```
+  ```BASH
+  bash-3.2$ ./create-error-summary.sh ./2015-02-24-biocache-service.log
+  [org.ala.biocache.dao.SearchDAOImpl]     582
+  [org.ala.biocache.service.AuthService]      68
+  [org.ala.biocache.service.DownloadService]       9
+  [org.ala.biocache.util.CollectionsCache]       6
+  [org.ala.biocache.web.MapController]       3
+  [org.ala.biocache.web.WMSController]      36
+  ```
 
 * [[org.ala.biocache.dao.SearchDAOImpl]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/dao/SearchDAOImpl.java)
 Error executing query with requestParams:
