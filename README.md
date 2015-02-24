@@ -312,9 +312,50 @@ Caused by: org.apache.http.NoHttpResponseException: The target server failed to 
         at org.apache.solr.client.solrj.impl.HttpSolrServer.request(HttpSolrServer.java:365)
         ... 12 more
 ```
-
 * [[org.ala.biocache.service.AuthService]](https://github.com/AtlasOfLivingAustralia/biocache-service/blob/master/src/main/java/au/org/ala/biocache/service/AuthService.java#L132)
-
+RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+```
+2015-02-19 11:30:37,053 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+ at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@2e92cded; line: 1, column: 1]; nested exception is org.codehaus.jackson.map.JsonMappingException: Can not deserialize instance of java.util.List out of START_OBJECT token
+ at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@2e92cded; line: 1, column: 1]
+org.springframework.web.client.ResourceAccessException: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+ at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@2e92cded; line: 1, column: 1]; nested exception is org.codehaus.jackson.map.JsonMappingException: Can not deserialize instance of java.util.List out of START_OBJECT token
+ at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@2e92cded; line: 1, column: 1]
+        at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:453)
+        at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:401)
+        at org.springframework.web.client.RestTemplate.postForObject(RestTemplate.java:279)
+        at au.org.ala.biocache.service.AuthService.loadMapOfEmailToUserId(AuthService.java:132)
+        at au.org.ala.biocache.service.AuthService.reloadCaches(AuthService.java:154)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+        at org.springframework.scheduling.support.MethodInvokingRunnable.run(MethodInvokingRunnable.java:65)
+        at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:51)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+        at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:304)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:178)
+        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:744)
+Caused by: org.codehaus.jackson.map.JsonMappingException: Can not deserialize instance of java.util.List out of START_OBJECT token
+ at [Source: sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@2e92cded; line: 1, column: 1]
+        at org.codehaus.jackson.map.JsonMappingException.from(JsonMappingException.java:163)
+        at org.codehaus.jackson.map.deser.StdDeserializationContext.mappingException(StdDeserializationContext.java:198)
+        at org.codehaus.jackson.map.deser.CollectionDeserializer.handleNonArray(CollectionDeserializer.java:149)
+        at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:107)
+        at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:97)
+        at org.codehaus.jackson.map.deser.CollectionDeserializer.deserialize(CollectionDeserializer.java:26)
+        at org.codehaus.jackson.map.ObjectMapper._readMapAndClose(ObjectMapper.java:2395)
+        at org.codehaus.jackson.map.ObjectMapper.readValue(ObjectMapper.java:1655)
+        at org.springframework.http.converter.json.MappingJacksonHttpMessageConverter.readInternal(MappingJacksonHttpMessageConverter.java:135)
+        at org.springframework.http.converter.AbstractHttpMessageConverter.read(AbstractHttpMessageConverter.java:154)
+        at org.springframework.web.client.HttpMessageConverterExtractor.extractData(HttpMessageConverterExtractor.java:74)
+        at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:446)
+        ... 18 more
+```
 
 ####3. testing queries
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
