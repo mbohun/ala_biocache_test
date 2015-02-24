@@ -356,6 +356,62 @@ Caused by: org.codehaus.jackson.map.JsonMappingException: Can not deserialize in
         at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:446)
         ... 18 more
 ```
+This one seems to be occuring with regular frequency of every 10 minutes:
+```BASH
+grep 'RestTemplate error:' ./biocache-service.log
+
+2015-02-19 11:00:19,069 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 11:10:25,575 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 11:20:31,403 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 11:30:37,053 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 11:40:43,669 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 11:50:50,354 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:00:56,772 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:11:03,334 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:21:10,239 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:31:16,201 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:41:22,793 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 12:51:29,485 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:01:35,218 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:11:41,979 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:21:48,813 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:31:55,560 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:42:02,069 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 13:52:11,145 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:02:17,473 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:12:24,063 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:22:30,167 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:32:37,936 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:42:44,283 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 14:52:50,470 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 15:02:50,731 [org.ala.biocache.service.AuthService] RestTemplate error: 500 Internal Server Error
+2015-02-19 15:02:50,765 [org.ala.biocache.service.AuthService] RestTemplate error: 500 Internal Server Error
+2015-02-19 15:02:50,792 [org.ala.biocache.service.AuthService] RestTemplate error: 500 Internal Server Error
+2015-02-19 15:12:58,388 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 15:23:04,767 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 15:33:10,905 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 15:43:17,279 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 15:53:23,498 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:03:29,581 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:13:36,851 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:23:43,062 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:33:50,071 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:43:56,829 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 16:54:03,102 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:04:09,795 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:14:15,972 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:24:22,036 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:34:29,166 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:44:36,200 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 17:54:43,181 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:04:52,116 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:14:59,324 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:25:05,773 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:35:11,599 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:45:21,031 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+2015-02-19 18:55:27,314 [org.ala.biocache.service.AuthService] RestTemplate error: I/O error: Can not deserialize instance of java.util.List out of START_OBJECT token
+...
+```
 
 ####3. testing queries
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
