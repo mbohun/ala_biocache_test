@@ -101,7 +101,9 @@ in production logs
  - run queries (test) session-s, record/collect/accumulate the timing data,
  - and overlay/corelate the collected query session timing data on top of the biocache (error) log data (from the same period of time)
  
-* SPAM queries these usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop, BUT excluding matches where the erroro log line contains a valid URL). *example:*
+* SPAM queries these usually (most of the time) match the regexp:  
+  `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'`  
+  (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop, BUT excluding matches where the erroro log line contains a valid URL). *example:*
 
   ```BASH
   sudo grep \
