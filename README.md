@@ -116,7 +116,14 @@ in production logs
    - count/plot each error type total per day (on a timeline)
 
   ```BASH
-  sudo grep '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[[a-zA-Z0-9.]*\]' /var/log/tomcat7/biocache-service.log | sed -e 's/].*$/]/g' | sed -e 's/^.*\[/[/' | sort | uniq
+  sudo grep \
+  '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[[a-zA-Z0-9.]*\]' \
+  /var/log/tomcat7/biocache-service.log \
+  | sed -e 's/].*$/]/g' \
+  | sed -e 's/^.*\[/[/' \
+  | sort \
+  | uniq
+  
   [org.ala.biocache.dao.SearchDAOImpl]
   [org.ala.biocache.service.AuthService]
   [org.ala.biocache.service.DownloadService]
