@@ -17,8 +17,7 @@ ERROR_TIMESTAMPS=`mktemp /tmp/${temp}.XXXXXX` || exit 1
 eval grep $ERROR_REGEXP $LOG_FILE | grep '^201[5-9]' | sed -e 's/ \[org.*$//g' > $ERROR_TIMESTAMPS
 
 # for each day extract the number of errors
-for day in `cat $ERROR_TIMESTAMPS | sed -e 's/ .*$//g' | sort | uniq`
-do
+for day in `cat $ERROR_TIMESTAMPS | sed -e 's/ .*$//g' | sort | uniq`; do
     counter=`grep ${day} $ERROR_TIMESTAMPS | wc -l`
     echo "${day} ${counter}"
 done
