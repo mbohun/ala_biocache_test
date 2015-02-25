@@ -99,11 +99,12 @@ in production logs
 * Intro
  - Limitations & Constraints
    Main limitation at the moment is the lack of information/details/sample/example queries that "are running slow" to compare them with "normal" queries to disect the problem deper.
-* SPAM queries these usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop). *example:*
+* SPAM queries these usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop, BUT excluding matches where the erroro log line contains a valid URL). *example:*
   ```BASH
   sudo grep \
   '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://' \
-  /var/log/tomcat7/biocache-service.log
+  /var/log/tomcat7/biocache-service.log \
+  | grep -v 'http[s]*\://ala\-rufus'
   ```
   This should be flitered off ASAP to avoid any further processing as much as possible. This should be rather easy to benchmark, as in setup a test case where the same N legimitate/normal queries will be:
   - executed WITHOUT any interference/competition from SPAM queries
