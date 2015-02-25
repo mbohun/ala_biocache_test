@@ -100,9 +100,9 @@ in production logs
  - Limitations & Constraints  
    Main limitation at the moment is the lack of information/details/sample/example queries that "are running slow" so we could compare them with "normal/not-slow" queries in order to disect/study the problem deeper.
  - At the moment we seem to be limited to:
-  1. parse/process/plot the available biocache logs, and
-  2. run queries (test) session-s, record/collect/accumulate the timing data,
-  3. and overlay/corelate the collected query session data onto the biocache log data (from step 1.)
+   1. parse/process/plot the available biocache logs, and
+   2. run queries (test) session-s, record/collect/accumulate the timing data,
+   3. and overlay/corelate the collected query session data onto the biocache log data (from step 1.)
  
 * SPAM queries these usually (most of the time) match the regexp `'^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[org.ala.biocache.dao.SearchDAOImpl\] Error executing query with requestParams: q=text:.*http[s]*://'` (intentionally kept simple for clarity; the log message (like all) starts with a timestamp (partially restriceted here), followed by a constant string composed of the class name, the error itself, followed by the q=text: containing/followed by a HTTP/HTTPS link / URL to some online shop, BUT excluding matches where the erroro log line contains a valid URL). *example:*
 
