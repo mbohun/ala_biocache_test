@@ -1,4 +1,4 @@
-set terminal pngcairo font "arial,8" size 1200,500
+set terminal pngcairo font "arial,8" size 5000,250
 set title "ALA biocache-service.log"
 set ylabel "errors per sec"
 set xlabel "date"
