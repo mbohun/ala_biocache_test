@@ -18,7 +18,7 @@ for err in `sed -e 's/^.*\[/[/' tmp.log | sort | uniq`; do
     rm -f $err.ts
     while read -r line
     do
-	date_string=`echo $line | sed -e 's/ \[.*$//g'`
+	date_string=`echo "$line" | sed -e 's/ \[.*$//g'`
 	timestamp=`date -d "$date_string" +"%s"`
 	echo "$timestamp" >> $err.ts
     done < "$err.log"
