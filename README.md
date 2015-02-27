@@ -460,11 +460,12 @@ grep 'RestTemplate error:' ./biocache-service.log
 ```
 
 ####3. testing queries
-* write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time
+* write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time  
   ```BASH
   ./create-error-summary-per.sh ./biocache-searvice.log;
   gnuplot log_errors_per_second.gnuplot > log_errors_per_second.png
   ```
+  
   example output (log_errors_per_second.png):
   ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/log_errors_per_second.png "example ouptut")
 
