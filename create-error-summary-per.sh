@@ -12,6 +12,5 @@ grep '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[[a-zA-Z0-9.]*\]' $LOG_FILE | sed -e 's/
 
 for err in `sed -e 's/^.*\[/[/' tmp.log | sort | uniq`; do
     regexp='^201[4-9]-[0-1][0-9]-[0-3][0-9].*\\$err'
-    err_count=`eval grep $regexp tmp.log | wc -l`
-    echo "$err $err_count"
+    eval grep $regexp tmp.log | sed -e 's/ \[.*$//g'
 done
