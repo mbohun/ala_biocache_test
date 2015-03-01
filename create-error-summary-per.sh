@@ -22,11 +22,15 @@ for err in `sed -e 's/^.*\[/[/' tmp.log | sort | uniq`; do
 	timestamp=`date -d "$date_string" +"%s"`
 	echo "$timestamp" >> $err.ts
     done < "$err.log"
+    rm -f $err.log
 
     rm -f $err.dat
     for ts in `cat $err.ts | uniq`; do
 	count=`grep "$ts" $err.ts |wc -l`
 	echo "$ts $count" >> $err.dat
     done
-	
+    rm -f $err.ts
+
 done
+
+rm -f tmp.log
