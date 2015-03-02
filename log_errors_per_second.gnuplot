@@ -1,9 +1,11 @@
+set datafile separator ","
 set terminal pngcairo font "arial,8" size 5000,250
 set title "ALA biocache-service.log"
 set ylabel "errors per sec"
 set xlabel "date"
 set xdata time
-set timefmt "%s"
+#set timefmt "%s"
+set timefmt "%Y-%m-%d %H:%M:%S"
 set format x "%Y-%m-%d"
 set key left top
 set grid

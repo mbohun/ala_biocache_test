@@ -13,24 +13,14 @@ grep '^201[4-9]-[0-1][0-9]-[0-3][0-9].*\[[a-zA-Z0-9.]*\]' $LOG_FILE | sed -e 's/
 for err in `sed -e 's/^.*\[/[/' tmp.log | sort | uniq`; do
     regexp='^201[4-9]-[0-1][0-9]-[0-3][0-9].*\\$err'
 
-    eval grep $regexp tmp.log > $err.log
-
-    rm -f $err.ts
-    while read -r line
-    do
-	date_string=`echo "$line" | sed -e 's/ \[.*$//g'`
-	timestamp=`date -d "$date_string" +"%s"`
-	echo "$timestamp" >> $err.ts
-    done < "$err.log"
-    rm -f $err.log
+    eval grep $regexp tmp.log | sed -e 's/,[0-9][0-9][0-9].*$//g' > $err.log
+    cat $err.log | uniq > $err.ulog
 
     rm -f $err.dat
-    for ts in `cat $err.ts | uniq`; do
-	count=`grep "$ts" $err.ts |wc -l`
-	echo "$ts $count" >> $err.dat
-    done
-    rm -f $err.ts
-
+    while read -r line
+    do
+	echo "$line,`grep "$line" $err.log | wc -l`" >> $err.dat
+    done < "$err.ulog"
+    
+    rm -f $err.ulog $err.log
 done
-
-rm -f tmp.log
