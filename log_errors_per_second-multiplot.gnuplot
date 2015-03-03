@@ -1,4 +1,7 @@
 set datafile separator ","
+
+# NOTE: on osx EITHER install gnuplot with: 'brew install gnuplot --cairo' / 'brew install gnuplot --with-cairo'
+#              OR change the terminal from pngcairo to png (however the png output is acceptable but phugly)
 set terminal pngcairo font "arial,8" size 4096,1200
 
 # NOTE: for SVG output use:
