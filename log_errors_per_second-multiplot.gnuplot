@@ -9,7 +9,7 @@ set terminal pngcairo font "arial,8" size 4096,1200
 
 set xlabel "date"
 set ylabel "errors per sec"
-set yrange [0:*]
+set yrange [0:]
 
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
