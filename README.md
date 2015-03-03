@@ -469,6 +469,15 @@ grep 'RestTemplate error:' ./biocache-service.log
   example output (log_errors_per_second.png):
   ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/log_errors_per_second.png "example ouptut")
 
+  OR
+  ```BASH
+  ./create-error-summary-per.sh ./biocache-searvice.log;
+  gnuplot log_errors_per_second-multiplot.gnuplot > log_errors_per_second-multiplot.png
+  ```
+
+  example output (log_errors_per_second-multiplot.png):
+  ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/log_errors_per_second-multiplot.png "example ouptut")
+
 ####NOTES:
 **TODO:** move this, or at least structure this into sections/parts as we go
 
