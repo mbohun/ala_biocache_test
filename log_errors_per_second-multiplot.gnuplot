@@ -1,7 +1,9 @@
 set datafile separator ","
 set terminal pngcairo font "arial,8" size 4096,1200
 
-#set title "ALA biocache-service.log"
+# NOTE: for SVG output use:
+#set terminal svg fname 'arial' fsize 7 size 4096,1200
+
 set xlabel "date"
 set ylabel "errors per sec"
 set yrange [0:*]
@@ -15,7 +17,7 @@ set xtics "1980-01-01 00:00:00",86400
 set key left top
 set grid
 
-set multiplot layout 9,1
+set multiplot layout 9,1 title "ALA biocache-service.log"
 
 set ytics  5
 plot "[org.ala.biocache.dao.SearchDAOImpl].dat"         using 1:2 with impulses title 'org.ala.biocache.dao.SearchDAOImpl'
