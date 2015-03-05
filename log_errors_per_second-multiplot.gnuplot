@@ -14,7 +14,7 @@ set yrange [0:]
 set xdata time
 set timefmt "%Y-%m-%d %H:%M:%S"
 set format x "%Y-%m-%d"
-set xrange["2015-02-19 00:00:00":"2015-03-04 00:00:00"]
+set xrange["2015-02-19 00:00:00":"2015-03-10 00:00:00"]
 set xtics "1980-01-01 00:00:00",86400
 
 set key left top
