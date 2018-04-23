@@ -1,12 +1,12 @@
 # ala_biocache_test
 test scripts for Atlas of Living Australia biocache
 
-###problem
+### problem
 (problem-s identified so far)
 in production logs 
 
-###solution
-####1. test environment setup
+### solution
+#### 1. test environment setup
 * check and adjust if required `/etc/hosts` file on:
  - on any machine (for example your workstation) you are going to use to run the ansible installation scripts from, and/or later access the test env/vm with curl, webbrowser, etc.; the IP address, and hostname has to match the one in your ansible inventory for this installation
   ```
@@ -95,7 +95,7 @@ in production logs
    ```
   - 
 
-####2. prod log analysis
+#### 2. prod log analysis
 * Intro, Limitations & Constraints; Main limitation at the moment is the lack of information/details/sample/example queries that "are running slow" so we could compare them with "normal/not-slow" queries in order to disect/study the problem deeper. At the moment we seem to be limited to:
  - parse/process/plot the available biocache logs, and
  - run queries (test) session-s, record/collect/accumulate the timing data,
@@ -459,7 +459,7 @@ grep 'RestTemplate error:' ./biocache-service.log
 ...
 ```
 
-####3. testing queries
+#### 3. testing queries
 * write a script/scripts that extract diff types of errors/exceptions from biocache-service.log and visualise/plot the frequency of diff types of errors over period of time  
   ```BASH
   ./create-error-summary-per.sh ./biocache-searvice.log;
@@ -478,7 +478,7 @@ grep 'RestTemplate error:' ./biocache-service.log
   example output (log_errors_per_second-multiplot.png):
   ![Alt text](https://raw.githubusercontent.com/mbohun/ala_biocache_test/master/log_errors_per_second-multiplot.png "example ouptut")
 
-####NOTES:
+#### NOTES:
 **TODO:** move this, or at least structure this into sections/parts as we go
 
 ```BASH
